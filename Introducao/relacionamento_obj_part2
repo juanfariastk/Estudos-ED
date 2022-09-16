@@ -1,0 +1,37 @@
+from Relacionamento_obj1 import Motor
+
+#criando
+
+class Carro:
+    def __init__(self, cor, placa, motor):
+        self._cor = cor
+        self._placa = placa
+        self._motor = motor
+    
+    #gets
+    @property
+    def cor(self):
+        return self._cor
+    
+    @property
+    def placa(self):
+        return self._placa
+    
+    @property
+    def motor(self):
+        return self._motor
+    
+    #sets
+    @cor.setter
+    def cor(self, nova_cor):
+        self._cor = nova_cor
+    
+    #retorno final
+    def __str__(self):
+        return f'este carro tem a cor {self.cor}, de placa {self._placa} e o motor {self._motor}'
+
+if __name__ =='__main__':
+    mot1 = Motor(2.0, 'gasosa')
+    car1 = Carro('preto', 'SDK-3458', mot1)
+
+    print(car1)
