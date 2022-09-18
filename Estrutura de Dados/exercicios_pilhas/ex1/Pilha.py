@@ -34,7 +34,7 @@ class Pilha:
     def __str__(self) -> str:
         dados= ''
         for i in self._dados:
-            dados+=f'{i} '
+            dados+=f'{i}'
         return dados
 
    

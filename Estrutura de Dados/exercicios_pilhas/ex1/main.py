@@ -1,5 +1,6 @@
 from Banco_dados import *
 from Pilha import *
+import os
 
 banco_de_dados = BancoDeDados()
 pilha_atual=0
@@ -8,7 +9,7 @@ elemento_topo=0
 
 while True:
 
-    
+
 
     print('Controle de pilhas v1','|----------------------|',f' Pilha atual: {pilha_atual+1} de {banco_de_dados.tamanho_banco()}', f' Topo = [{elemento_topo}]','|----------------------|', '(e) empilhar', '(d) desempilhar', '(t) tamanho', '(o) obter elemento do topo', '(r) criar pilha', '(n) inverter elementos da pilha', '(z) esvaziar pilha' , '(c) concatenar duas pilhas', '(m) escolher outra pilha', '(s) sair', '|----------------------|', sep='\n' )
     
@@ -38,10 +39,12 @@ while True:
             pilha_atual = int(input('escolha uma pilha'))
             pilha_atual = pilha_atual-1
             elemento_topo=banco_de_dados.elemento_do_topo(pilha_atual)
-        elif acao=='z':
+        elif acao=='s':
             break
         else:
             print('escolha uma ação válida!')
+    
+        os.system('clear')
 
     except BancoDeDadosException as bdde:
         print(bdde)  

@@ -1,5 +1,6 @@
 from Pilha import *
 import random
+from itertools import *
 
 class BancoDeDadosException(Exception): 
     def __init__(self, msg):
@@ -58,7 +59,14 @@ class BancoDeDados:
             raise BancoDeDadosException(f'erro ao acessar a pilha {indice}')
     
     def concatenar_pilhas(self, pilha1, pilha2):
-        self._pilhas[pilha1].empilhar(self._pilhas[pilha2])
+        lista = ''
+        lista += str(self._pilhas[pilha1])
+        lista += str(self._pilhas[pilha2])
+        self.cria_pilha()
+        for i in lista:
+            self._pilhas[len(self._pilhas)-1].empilhar(i)
+        
+
         
     def esvaziar_pilha(self, indice_pilha):
         self._pilhas[indice_pilha].limpar_pilha()
@@ -114,6 +122,11 @@ if __name__=='__main__':
         print(banco_dados.verifica_pilha(2))
         
         print(banco_dados.verifica_vazia(5))
+        print(banco_dados.verifica_pilha(5))
+        print(banco_dados.elemento_do_topo(5))
+        banco_dados.inverter(5)
+        print(banco_dados.verifica_pilha(5))
+        print(banco_dados.elemento_do_topo(5))
 
     except BancoDeDadosException as bdde:
         print(bdde)
