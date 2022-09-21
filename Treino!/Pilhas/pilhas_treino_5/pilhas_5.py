@@ -40,12 +40,14 @@ class Pilha:
         aponta=aponta._proximo
         return f'O subtopo é o elemento {aponta._dado}'
 
+    
     def busca(self, item):
         aponta = self.__topo
         while(aponta):
             if aponta._dado == item:
                 return True
             aponta = aponta._proximo
+    
     
     def buscar_posicao(self, posicao):
         aponta = self.__topo

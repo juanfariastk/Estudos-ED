@@ -66,7 +66,6 @@ class BancoDeDados:
         for i in lista:
             self._pilhas[len(self._pilhas)-1].empilhar(i)
         
-
         
     def esvaziar_pilha(self, indice_pilha):
         self._pilhas[indice_pilha].limpar_pilha()
