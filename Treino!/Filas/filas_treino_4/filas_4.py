@@ -1,4 +1,5 @@
 
+
 class FilaCircularExcept(Exception):
     def __init__(self, msg):
         super().__init__(msg)
@@ -58,6 +59,7 @@ class FilaSequencialCircular:
         conteudo = self.__itens[self.__inicio]
         self.__inicio = (self.__inicio+1)%self.__tamanho
         self.__ocupados-=1
+        return conteudo
     
     def __str__(self):
         if self.esta_vazia():
@@ -65,7 +67,7 @@ class FilaSequencialCircular:
         dados=''
         inicio = self.__inicio
         for i in range(len(self)):
-            dados+=f'{self.__itens[inicio]} '
+            dados+=f' {self.__itens[inicio]} ' +'=>'
             inicio = (inicio+1)%self.__tamanho
         return dados
     
@@ -77,23 +79,13 @@ class FilaSequencialCircular:
 if __name__=='__main__':
 
     try:
-        
-        fila_circular = FilaSequencialCircular(7)
-        
-        fila_circular.enfileira('-')
-        fila_circular.enfileira('-')
-        fila_circular.enfileira(5)
-        fila_circular.enfileira(7)
-        fila_circular.enfileira(9)
-        fila_circular.enfileira(8)
-        fila_circular.enfileira(10)
+        fila_circular = FilaSequencialCircular()
 
+        for i in range(1,6):
+            fila_circular.enfileira(i)
         print(fila_circular)
+        
 
-        fila_circular.desenfileira()
-
-        print(fila_circular)
-    
     except FilaCircularExcept as fce:
         print(fce)
     

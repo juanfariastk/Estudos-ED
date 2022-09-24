@@ -1,0 +1,99 @@
+(a-b) / (c+b)
+
+a - b => y
+y - cd +/
+Y cd +/ 
+c + d = z
+yz/
+yz/ = y/z
+
+exemplo com números:
+
+a = 10
+b = 5
+c = 1
+d = 2
+
+substituindo na notação infixa...
+
+(10-5) / (1+2)
+5/3 
+resultado 1.6
+
+agora resolvendo na notação pósfixa:
+
+10 5- 1 2+/
+10 - 5 = 5
+5 1 2 +/
+1 + 2 = 3
+5 3 / 
+5 / 3 
+1.6
+
+prioridades de operador:
+
+() => prioridade 1     ^
++ ou - => prioridade 2 |
+* ou / => prioridade 3 | prioridadade maior para menor.
+^ => prioridade 4      |
+
+usando pilha...
+infixa => a *( b + c ) / d
+pósfixa => abc+*d/
+
+pilha = []
+
+saída:
+
+a = 10
+b = 5
+c = 1 
+d = 2
+abc+*d/
+
+10 5 1 + * 2/
+5 + 1 = 6
+10 6 * 2 /
+10 * 6 = 60
+60 2 /
+60 / 2 = 30
+
+caso 2:
+
+infixa => ((a+b) * c - (d-e) ^ (f+g))
+pósfixa => ab+c*de--fg+^
+
+pilha = [  
+
+saida
+ab+c*de--fg+^
+
+
+caso 3:
+
+infixa => a^b*c-d+e/f/(g+h)
+pósfixa =>
+
+pilha = [
+
+saida
+ab^c*d-ef/gh+/+
+
+
+caso o topo atual seja maior ou igual ao operador a ser empilhado, o topo atual irá sair e o operador a ser empilhado será 
+o novo topo.
+caso contrário, isto é, o topo atual seja menor que o operador a ser empilhado, ambos irão se manter.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
