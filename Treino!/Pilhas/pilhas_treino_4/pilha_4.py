@@ -30,8 +30,10 @@ class PilhaEncadeada:
         self.__tamanho+=1
     
     def desempilha(self):
+        item = self.__topo._item
         self.__topo = self.__topo._proximo
         self.__tamanho-=1
+        return item
     
     def desempilha_elementos(self,elementos):
         try:
@@ -47,11 +49,8 @@ class PilhaEncadeada:
         try:
             assert not self.pilha_vazia() and self.__tamanho>1
             aponta = self.__topo
-            contador=len(self)
-            while(contador!=2):
-                aponta=aponta._proximo
-                contador-=1
-            return f'O subtopo é o elemento {aponta._item}'
+            aponta = self.__topo._proximo
+            return f'o subtopo da pilha é {aponta._item}'
         except AssertionError:
             raise PilhaEncadeadaException(f'esta pilha não tem subtopo!')
 
@@ -74,15 +73,48 @@ class PilhaEncadeada:
             aponta = aponta._proximo
             contador+=1
 
+    def inverter_pilha(self):
+        aux = PilhaEncadeada()
+        while not self.pilha_vazia():
+            aux.empilhar(self.desempilha())
+        self.__topo = aux.__topo
+        final = self.__topo
+        return final
+
+        
     def buscar_posicao(self, posicao):
         aponta = self.__topo
         cont=0
-        while(aponta):
-            if self.__tamanho-cont == posicao:
-                return f'O elemento encontrado na posição {posicao} foi {aponta._item}'
+        while(self.__tamanho-posicao!=cont):
             aponta = aponta._proximo
             cont+=1
-    
+        return f'O elemento encontrado na posição {posicao} foi {aponta._item}'
+
+    def concatena_pilha(self, pilha:object):
+        aux = PilhaEncadeada()
+        while(not pilha.pilha_vazia()):
+            aux.empilhar(pilha.desempilha())
+        while(not aux.pilha_vazia()):
+            print('concatenando...')
+            self.empilhar(aux.desempilha())
+        
+    @classmethod
+    def concatenar_pilhas(cls, pilha1:object, pilha2:object):
+        pilha_inicio = PilhaEncadeada()
+        pilha_final = PilhaEncadeada()
+
+        while not pilha1.pilha_vazia():
+            pilha_inicio.empilhar(pilha1.desempilha())
+        while not pilha_inicio.pilha_vazia():
+            pilha_final.empilhar(pilha_inicio.desempilha())
+        while not pilha2.pilha_vazia():
+            pilha_inicio.empilhar(pilha2.desempilha())
+        while not pilha_inicio.pilha_vazia():
+            pilha_final.empilhar(pilha_inicio.desempilha())
+
+        return pilha_final
+        
+            
     def modificar_item(self, posicao, item):
         aponta = self.__topo
         cont = 0 
